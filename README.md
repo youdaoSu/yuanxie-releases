@@ -2,7 +2,7 @@
 
 [下载最新版本](https://github.com/youdaoSu/yuanxie-releases/releases/latest)
 
-此仓库仅提供远协安装包、SHA-256 校验文件和下载说明。源码仓库保持私有。
+此仓库提供远协安装包、SHA-256 校验文件、下载说明及发布工作流。应用源码仓库保持私有。
 
 | 系统 | 请选择 |
 | --- | --- |
