@@ -35,9 +35,10 @@ jobs:
             delete process.env.TRANSFER_MANIFEST;
             if(!/^v\d+\.\d+\.\d+$/.test(manifest.tag)||!/^\d+\.\d+\.\d+$/.test(manifest.desktop)||!Number.isSafeInteger(manifest.releaseId))throw Error('Invalid release identity');
             const expected=[`YuanXie-Desktop-${manifest.desktop}-Windows-x64.zip`];
-            for(const arch of ['x64','arm64'])for(const [platform,formats] of [['macOS',['zip','dmg']],['Linux',['tar.gz','deb']]])for(const format of formats)expected.push(`YuanXie-Desktop-${manifest.desktop}-${platform}-${arch}.${format}`);
-            const names=expected.flatMap(name=>[name,name+'.sha256']);
-            if(!Array.isArray(manifest.files)||manifest.files.length!==18||new Set(manifest.files.map(file=>file.name)).size!==18)throw Error('Incomplete installer set');
+            const [major,minor,patch]=manifest.desktop.split('.').map(Number),incremental=major>0||minor>11||minor===11&&patch>=5;
+            for(const arch of ['x64','arm64'])for(const [platform,formats] of [['macOS',['zip','dmg']],['Linux',incremental?['zip','tar.gz','deb']:['tar.gz','deb']]])for(const format of formats)expected.push(`YuanXie-Desktop-${manifest.desktop}-${platform}-${arch}.${format}`);
+            const names=expected.flatMap(name=>[name,name+'.sha256',...(incremental&&name.endsWith('.zip')?[name+'.blockmap.json']:[])]);
+            if(!Array.isArray(manifest.files)||manifest.files.length!==names.length||new Set(manifest.files.map(file=>file.name)).size!==names.length)throw Error('Incomplete installer set');
             for(const item of manifest.files){const url=new URL(item.url);if(!names.includes(item.name)||url.protocol!=='https:'||url.hostname!=='release-assets.githubusercontent.com'||url.username||url.password||!/^\d{4}-\d{2}-\d{2}T/.test(manifest.createdAt)||!Number.isSafeInteger(item.size)||item.size<1||item.size>400*1024*1024||!/^[a-f0-9]{64}$/.test(item.sha256))throw Error('Invalid installer grant');}
             if(Date.now()-Date.parse(manifest.createdAt)>40*60*1000)throw Error('Installer grants have expired; dispatch a fresh manifest');
             const gh=args=>execFileSync('gh',args,{encoding:'utf8',maxBuffer:4*1024*1024,timeout:600000});
@@ -59,8 +60,8 @@ jobs:
                 if(!asset||asset.state!=='uploaded'||asset.size!==item.size||asset.digest!=='sha256:'+item.sha256)throw Error('Public upload verification failed: '+item.name);
                 console.log('Verified '+item.name);
               }
-              if(read().assets.length!==18)throw Error('Public release is incomplete');
-              console.log('All 18 installer/checksum files verified; release remains draft.');
+              if(read().assets.length!==names.length)throw Error('Public release is incomplete');
+              console.log('All '+names.length+' installer/checksum/blockmap files verified; release remains draft.');
             }finally{
               if(path.dirname(temporary)!==parent||fs.lstatSync(temporary).isSymbolicLink())throw Error('Unsafe temporary directory');
               for(const name of fs.readdirSync(temporary))if(!names.includes(name)||fs.lstatSync(path.join(temporary,name)).isSymbolicLink())throw Error('Unsafe temporary file');
