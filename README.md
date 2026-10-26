@@ -1,52 +1,31 @@
-<!-- yuanxie-linux-pause-20261026 -->
-## 0.20.2 预发行与平台维护
-
-[当前预发行及完整功能/限制说明](https://github.com/youdaoSu/yuanxie-releases/releases/tag/v0.20.2)。仅在该页面正式公开后下载；草稿期间链接不可访问。
-
-本批提供 Windows x64、macOS ARM64（Apple Silicon）、Linux x64。Linux 本次之后暂停更新，保留本版下载与网页访问；不包含 Linux ARM64 和 Intel Mac 安装包。后续 Windows、macOS 和网页/云端继续维护。
-
-本次不取代原稳定 Latest，不承诺三端所有功能验收完成。Linux 防录屏未支持，Mac/Linux 原生系统声音和真实阿里云语音/回答仍有未验收项目。菜单栏、Dock、任务栏和快捷键的具体行为请阅读发布说明。
-
-Linux 默认快捷键：主窗口 Ctrl+Shift+F12，透明 Ctrl+Shift+F11，会议 Ctrl+Shift+F10，问答 Ctrl+Shift+F9。升级保留旧设置，可在键盘快捷键中恢复默认并保存；全局键是否可用取决于桌面系统和虚拟机。
-
 # 远协 · 客户端下载
 
-[下载当前稳定版](https://github.com/youdaoSu/yuanxie-releases/releases/latest) · [查看历史版本](https://github.com/youdaoSu/yuanxie-releases/releases)
+**当前默认版本：0.20.2** · [查看发布说明与全部附件](https://github.com/youdaoSu/yuanxie-releases/releases/latest)
 
-此仓库只提供安装包、SHA-256 校验文件、下载说明和安装包转存工作流。应用源码保持私有。
+正式云端入口：[打开远协](https://yuanxie-youdaosu.pages.dev/)。新安装请使用下方当前版本；旧客户端请手动下载更新。
 
-## 先选择你的系统
-
-当前默认发布批次为 **v0.19.5**，包含 **Windows x64、Linux x64 的桌面 0.11.9**。这个批次没有 Mac 或 Linux ARM64 安装包，请按下表选择对应入口，不要下载其他系统的文件。
-
-| 电脑 | 下载入口 | 选择的附件 |
+| 你的电脑 | 安装包 | 使用方式 |
 | --- | --- | --- |
-| Windows，Intel／AMD 64 位 | [当前稳定批次 v0.19.5](https://github.com/youdaoSu/yuanxie-releases/releases/tag/v0.19.5) | `YuanXie-Desktop-0.11.9-Windows-x64.zip` |
-| Ubuntu／Debian，Intel／AMD 64 位 | [当前稳定批次 v0.19.5](https://github.com/youdaoSu/yuanxie-releases/releases/tag/v0.19.5) | `YuanXie-Desktop-0.11.9-Linux-x64.deb` |
-| 其他 Linux，Intel／AMD 64 位 | [当前稳定批次 v0.19.5](https://github.com/youdaoSu/yuanxie-releases/releases/tag/v0.19.5) | `YuanXie-Desktop-0.11.9-Linux-x64.tar.gz` |
-| Mac，Apple M 系列芯片 | [旧版下载 v0.19.0，桌面 0.11.1](https://github.com/youdaoSu/yuanxie-releases/releases/tag/v0.19.0) | `YuanXie-Desktop-0.11.1-macOS-arm64.dmg` |
-| Mac，Intel 芯片 | [旧版下载 v0.19.0，桌面 0.11.1](https://github.com/youdaoSu/yuanxie-releases/releases/tag/v0.19.0) | `YuanXie-Desktop-0.11.1-macOS-x64.dmg` |
-| Linux，ARM64／aarch64 | [旧版下载 v0.19.0，桌面 0.11.1](https://github.com/youdaoSu/yuanxie-releases/releases/tag/v0.19.0) | `YuanXie-Desktop-0.11.1-Linux-arm64.deb` 或 `.tar.gz` |
+| Windows x64（Intel / AMD） | [Windows 0.20.2 ZIP](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.2/YuanXie-Desktop-0.20.2-Windows-x64.zip) | 完整解压后运行安装入口 |
+| Mac Apple Silicon（M1 / M5 等） | [macOS 0.20.2 ARM64 DMG](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.2/YuanXie-Desktop-0.20.2-macOS-arm64.dmg) | 将 YuanXie.app 复制到“应用程序”后运行 |
+| Ubuntu / Debian x64 | [Linux 0.20.2 x64 DEB](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.2/YuanXie-Desktop-0.20.2-Linux-x64.deb) | 使用系统软件安装器；发布页另有 ZIP、tar.gz |
 
-旧版入口仅用于仍需这些平台安装包的用户，不表示它包含 Windows 新版的全部修正。较早批次的发布标签和桌面版本号不同，请以附件名称、应用设置中的版本号为准。0.20.0 正在本地构建与验收，尚未统一公开发布。
+每个安装包均提供同名 SHA-256 校验文件，ZIP 另有增量块映射。**本次不包含 Intel Mac 或 Linux ARM64。**
 
-GitHub 自动生成的 **Source code (zip)／Source code (tar.gz) 不是远协安装包**，无需下载。
+## 当前能力与已知限制
 
-## 安装与权限
+[完整功能清单：已实现、未实现和未实机验证](https://github.com/youdaoSu/yuanxie-releases/releases/tag/v0.20.2)。当前默认版本不表示所有功能均已验收。Linux 防录屏未支持；Windows/Mac 用户已反馈共享声音可用，但回声、设备切换、所有硬件路径及真实阿里云语音/回答仍有未验收项目。Mac 关闭“隐藏 Dock”会显示普通应用图标和菜单，隐藏窗口不等于防录屏。
 
-- **Windows：**完整解压 ZIP 后运行其中的 YuanXie 程序，不要直接从压缩包中启动。更新前保存工作并正常退出旧客户端。
-- **Mac：**需要 macOS 13 或更新版本。打开对应芯片的 DMG，将 `YuanXie.app` 拖入“应用程序”。这些旧包使用 ad-hoc 签名，未经 Apple Developer ID 签名或公证；首次打开可能需要在系统“隐私与安全性”中确认。麦克风、摄像头和屏幕录制需要分别授权给实际使用的客户端或浏览器。
-- **Linux：**Ubuntu／Debian 使用对应架构的 DEB；其他发行版可解压 TAR.GZ。Wayland 的屏幕共享与全局快捷键还取决于桌面门户支持。
-- **手机／平板：**使用浏览器打开有效的面板邀请链接；这里没有 Android／iOS 原生安装包。
+本批 Mac 使用本机构建临时签名，未完成 Apple 开发者签名与公证。GitHub 下载受所在网络影响；本机直连曾超时，现有代理下无需 GitHub 登录的下载核验通过，不能保证各地免 VPN 下载。
 
-桌面客户端和浏览器都需要连接可用的远协服务器。下载安装包不会自动创建服务器或账号；邀请链接所属服务器不可用时，应联系邀请者核对当前入口。
+## Linux 本次之后暂停更新
 
-## 更新、校验和平台差异
+0.20.2 是本次最后维护批次，之后暂停 Linux 桌面功能、修复和安装包更新；保留本版下载、源码历史及 Linux 浏览器访问。后续 Windows、macOS 和网页/云端继续维护。
 
-旧版 Windows 可在应用内检查更新；这里列出的旧版 Mac／Linux 客户端可能跳转到下载页，需要手动替换应用或安装新版 DEB。更新时保留原用户配置目录，不删除账号、录制或本地数据。
+Linux 默认快捷键：主窗口 **Ctrl + Shift + F12**，透明 **Ctrl + Shift + F11**，会议 **Ctrl + Shift + F10**，问答 **Ctrl + Shift + F9**。升级保留旧设置，可在“设置 → 键盘快捷键”恢复默认并保存。桌面环境、Fn 模式或 VMware 可能拦截全局键，不能保证无冲突。
 
-每个安装包都附有同名 `.sha256` 校验文件。请从本仓库 Release 下载，不使用来源不明的重新打包文件；下载中断可重试，实际速度取决于访问 GitHub 下载线路的网络情况。
+## 历史版本
 
-Windows 的窗口捕获保护与 Mac／Linux 的能力不同。透明、隐藏、Dock／任务栏不显示，不代表第三方会议一定捕获不到窗口；Mac／Linux 旧包不提供通用的第三方捕获排除保证。请在另一台设备的接收画面中确认实际结果。
+旧服务器客户端批次从公开发布列表下架，保留标签和归档附件供维护者回滚，不作为普通用户下载入口。运行中的云端会议不因 GitHub 发布状态调整而重启。软件内更新接口的旧元数据仍需单独修正，当前通过本页手动下载 0.20.2。
 
-这里不发布开发机数据库、账号、API 密钥、录音或私有应用源码。当前可用旧包会保留，待统一新版构建、实机验证和上线完成后再整理过时下载。
+此仓库只提供安装包、校验文件、下载说明和必要的安装包转存工作流；应用源码保持私有。
