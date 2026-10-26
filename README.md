@@ -1,3 +1,14 @@
+<!-- yuanxie-linux-pause-20261026 -->
+## 0.20.2 预发行与平台维护
+
+[当前预发行及完整功能/限制说明](https://github.com/youdaoSu/yuanxie-releases/releases/tag/v0.20.2)。仅在该页面正式公开后下载；草稿期间链接不可访问。
+
+本批提供 Windows x64、macOS ARM64（Apple Silicon）、Linux x64。Linux 本次之后暂停更新，保留本版下载与网页访问；不包含 Linux ARM64 和 Intel Mac 安装包。后续 Windows、macOS 和网页/云端继续维护。
+
+本次不取代原稳定 Latest，不承诺三端所有功能验收完成。Linux 防录屏未支持，Mac/Linux 原生系统声音和真实阿里云语音/回答仍有未验收项目。菜单栏、Dock、任务栏和快捷键的具体行为请阅读发布说明。
+
+Linux 默认快捷键：主窗口 Ctrl+Shift+F12，透明 Ctrl+Shift+F11，会议 Ctrl+Shift+F10，问答 Ctrl+Shift+F9。升级保留旧设置，可在键盘快捷键中恢复默认并保存；全局键是否可用取决于桌面系统和虚拟机。
+
 # 远协 · 客户端下载
 
 [下载当前稳定版](https://github.com/youdaoSu/yuanxie-releases/releases/latest) · [查看历史版本](https://github.com/youdaoSu/yuanxie-releases/releases)
