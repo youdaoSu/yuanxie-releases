@@ -6,13 +6,13 @@
 
 | 电脑 | 安装包 | 安装方式 |
 | --- | --- | --- |
-| Windows x64（Intel / AMD） | [Windows 0.20.4 ZIP](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.4/YuanXie-Desktop-0.20.4-Windows-x64.zip) | 完整解压后运行 YuanXie.exe，保留包内其他文件 |
-| Mac Apple Silicon（M 系列） | [macOS 0.20.4 ARM64 DMG](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.4/YuanXie-Desktop-0.20.4-macOS-arm64.dmg) | 将 YuanXie.app 复制到「应用程序」后打开 |
+| Windows x64（Intel / AMD） | [Windows 0.20.4 EXE 安装包](https://yuanxie.hengyuan.team/downloads/YuanXie-Setup-0.20.4-Windows-x64.exe) | 双击安装；再次运行新版安装包可覆盖升级；系统「已安装的应用」中卸载 |
+| Mac Apple Silicon（M 系列） | [macOS 0.20.4 ARM64 PKG 安装包](https://yuanxie.hengyuan.team/downloads/YuanXie-Setup-0.20.4-macOS-arm64.pkg) · [DMG](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.4/YuanXie-Desktop-0.20.4-macOS-arm64.dmg) | PKG 安装到「应用程序」，新版可覆盖升级；退出应用后移至废纸篓卸载 |
 | Ubuntu / Debian x64（暂停更新） | [Linux 0.20.2 x64 DEB](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.2/YuanXie-Desktop-0.20.2-Linux-x64.deb) | 使用系统软件安装器；其他附件见 0.20.2 发布页 |
 
-每份安装包提供同名 SHA-256 校验文件。Windows 与 Mac ZIP 另附更新块清单。当前不提供 Intel Mac、Linux ARM64 安装包。
+每份安装包提供同名 SHA-256 校验文件。Windows 安装和卸载仅处理程序文件，保留用户设置。Mac PKG 尚无 Apple Installer 签名，应用沿用开发签名，不是 Apple 公证包。Linux 在软件管理器安装、更新和卸载。内部兼容更新仍保留 ZIP 与更新块清单，不作为默认人工安装方式。当前不提供 Intel Mac、Linux ARM64 安装包。
 
-官网直连下载：[Windows 0.20.4 ZIP](https://yuanxie.hengyuan.team/downloads/YuanXie-Desktop-0.20.4-Windows-x64.zip) · [Mac 0.20.4 DMG](https://yuanxie.hengyuan.team/downloads/YuanXie-Desktop-0.20.4-macOS-arm64.dmg)。同名校验文件可在下载地址后追加 `.sha256` 获取。
+官网直连下载：[Windows 0.20.4 EXE](https://yuanxie.hengyuan.team/downloads/YuanXie-Setup-0.20.4-Windows-x64.exe) · [Mac 0.20.4 PKG](https://yuanxie.hengyuan.team/downloads/YuanXie-Setup-0.20.4-macOS-arm64.pkg) · [Mac DMG](https://yuanxie.hengyuan.team/downloads/YuanXie-Desktop-0.20.4-macOS-arm64.dmg)。同名校验文件可在下载地址后追加 `.sha256` 获取。
 
 ## 本版功能与限制
 
