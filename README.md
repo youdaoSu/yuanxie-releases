@@ -1,18 +1,18 @@
 # 远协 · 客户端下载
 
-**当前版本：0.20.5** · [查看发布说明与全部附件](https://github.com/youdaoSu/yuanxie-releases/releases/tag/v0.20.5)
+**当前版本：0.20.7** · [查看最新发布说明与全部附件](https://github.com/youdaoSu/yuanxie-releases/releases/latest)
 
 正式入口：[yuanxie.hengyuan.team](https://yuanxie.hengyuan.team)。新版客户端默认连接此入口，并验证服务器签名。旧客户端如仍连接旧 Pages 地址，请先下载新版；用户主动填写的自定义服务器设置会保留。
 
 | 电脑 | 安装包 | 安装方式 |
 | --- | --- | --- |
-| Windows x64（Intel / AMD） | [Windows 0.20.5 EXE 安装包](https://yuanxie.hengyuan.team/downloads/远协-0.20.5-Windows-x64.exe) | 双击安装；再次运行新版安装包可覆盖升级；系统「已安装的应用」中卸载 |
-| Mac Apple Silicon（M 系列） | [macOS 0.20.5 ARM64 PKG 安装包](https://yuanxie.hengyuan.team/downloads/远协-0.20.5-macOS-arm64.pkg) · [DMG](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.5/YuanXie-Desktop-0.20.5-macOS-arm64.dmg) | PKG 安装到「应用程序」，新版可覆盖升级；退出应用后移至废纸篓卸载 |
+| Windows x64（Intel / AMD） | [Windows 0.20.7 EXE 安装包](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.7/YuanXie-0.20.7-Windows-x64.exe) | 双击安装；再次运行新版安装包可覆盖升级；系统「已安装的应用」中卸载 |
+| Mac Apple Silicon（M 系列） | [macOS 0.20.7 ARM64 PKG 安装包](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.7/YuanXie-0.20.7-macOS-arm64.pkg) · [DMG](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.7/YuanXie-Desktop-0.20.7-macOS-arm64.dmg) | PKG 安装到「应用程序」，新版可覆盖升级；退出应用后移至废纸篓卸载 |
 | Ubuntu / Debian x64（暂停更新） | [Linux 0.20.2 x64 DEB](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.2/YuanXie-Desktop-0.20.2-Linux-x64.deb) | 使用系统软件安装器；其他附件见 0.20.2 发布页 |
 
 每份安装包提供同名 SHA-256 校验文件。Windows 安装和卸载仅处理程序文件，保留用户设置。Mac PKG 尚无 Apple Installer 签名，应用沿用开发签名，不是 Apple 公证包。Linux 在软件管理器安装、更新和卸载。内部兼容更新仍保留 ZIP 与更新块清单，不作为默认人工安装方式。当前不提供 Intel Mac、Linux ARM64 安装包。
 
-官网直连下载：[Windows 0.20.5 EXE](https://yuanxie.hengyuan.team/downloads/远协-0.20.5-Windows-x64.exe) · [Mac 0.20.5 PKG](https://yuanxie.hengyuan.team/downloads/远协-0.20.5-macOS-arm64.pkg) · [Mac DMG](https://yuanxie.hengyuan.team/downloads/YuanXie-Desktop-0.20.5-macOS-arm64.dmg)。同名校验文件可在下载地址后追加 `.sha256` 获取。
+校验文件：[Windows EXE SHA-256](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.7/YuanXie-0.20.7-Windows-x64.exe.sha256) · [Mac PKG SHA-256](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.7/YuanXie-0.20.7-macOS-arm64.pkg.sha256) · [Mac DMG SHA-256](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.7/YuanXie-Desktop-0.20.7-macOS-arm64.dmg.sha256)。
 
 ## 本版功能与限制
 
