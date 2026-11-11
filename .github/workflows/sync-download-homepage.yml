@@ -1,0 +1,88 @@
+name: Sync public download homepage
+on:
+  release:
+    types: [published, released]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: public-download-homepage
+  cancel-in-progress: false
+jobs:
+  sync-homepage:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - name: Sync README to the verified stable Latest release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module - <<'NODE'
+          import {execFileSync} from 'node:child_process';
+          import assert from 'node:assert/strict';
+          
+          const repo='youdaoSu/yuanxie-releases';
+          const releases='https://github.com/'+repo+'/releases';
+          const api=(endpoint,args=[],input)=>JSON.parse(execFileSync('gh',['api','repos/'+repo+'/'+endpoint,...args],{
+           input,encoding:'utf8',timeout:30000,stdio:['pipe','pipe','pipe']
+          }));
+          
+          function syncHomepage(readme, release) {
+           const tag=release.tag_name;
+           if(!/^v\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(tag)||release.draft!==false||release.prerelease!==false)throw Error('Latest must be a stable version.');
+           const version=tag.slice(1);
+           const win='YuanXie-'+version+'-Windows-x64.exe';
+           const mac='YuanXie-'+version+'-macOS-arm64.pkg';
+           const dmg='YuanXie-Desktop-'+version+'-macOS-arm64.dmg';
+           const assets=release.assets.filter(a=>a.state==='uploaded'&&a.size>0&&/^sha256:[a-f0-9]{64}$/.test(a.digest));
+           const has=name=>assets.filter(a=>a.name===name).length===1;
+           for(const name of [win,mac])if(!has(name)||!has(name+'.sha256'))throw Error('Verified installer and checksum are required: '+name);
+           const includeDmg=has(dmg)&&has(dmg+'.sha256');
+           const link=(label,name)=>'['+label+']('+releases+'/download/'+tag+'/'+name+')';
+           const lines=readme.split(/(\r?\n)/);
+           function replace(prefix,render) {
+            const indexes=lines.map((line,i)=>line.startsWith(prefix)?i:-1).filter(i=>i>=0);
+            if(indexes.length!==1)throw Error('Expected exactly one README section: '+prefix);
+            const i=indexes[0];
+            lines[i]=render(lines[i]);
+           }
+           const tableCell=(line,value)=>{
+            const cells=line.split('|');
+            if(cells.length!==5)throw Error('Unexpected README table row.');
+            cells[2]=' '+value+' ';
+            return cells.join('|');
+           };
+           replace('**当前版本：',()=> '**当前版本：'+version+'** · [查看最新发布说明与全部附件]('+releases+'/latest)');
+           replace('| Windows x64（Intel / AMD） |',line=>tableCell(line,link('Windows '+version+' EXE 安装包',win)));
+           replace('| Mac Apple Silicon（M 系列） |',line=>tableCell(line,link('macOS '+version+' ARM64 PKG 安装包',mac)+(includeDmg?' · '+link('DMG',dmg):'')));
+           replace('校验文件：',()=> '校验文件：'+[link('Windows EXE SHA-256',win+'.sha256'),link('Mac PKG SHA-256',mac+'.sha256'),...(includeDmg?[link('Mac DMG SHA-256',dmg+'.sha256')]:[])].join(' · ')+'。');
+           return lines.join('');
+          }
+          
+          const latest=api('releases/latest'),current=api('contents/README.md?ref=main');
+          const before=Buffer.from(current.content,'base64').toString('utf8'),next=syncHomepage(before,latest);
+          if(process.argv.includes('--verify')){
+           assert.equal(next,before);
+           const later={...latest,tag_name:'v0.99.1',assets:latest.assets.map(a=>({...a,name:a.name.replaceAll(latest.tag_name.slice(1),'0.99.1')}))};
+           const simulated=syncHomepage(before,later);
+           assert.match(simulated,/\*\*当前版本：0\.99\.1\*\*/);
+           assert.match(simulated,/0\.99\.1-Windows-x64\.exe/);
+           assert.match(simulated,/0\.99\.1-macOS-arm64\.pkg/);
+           assert.match(simulated,/Linux 0\.20\.2/);
+           assert.equal(syncHomepage(simulated,later),simulated);
+           assert.throws(()=>syncHomepage(before,{...later,prerelease:true}));
+           assert.throws(()=>syncHomepage(before,{...later,assets:[]}));
+           console.log('Verified README matches Latest and simulated promotion is safe.');
+          }else if(next===before){
+           console.log('Download homepage already matches '+latest.tag_name);
+          }else{
+           if(api('releases/latest').id!==latest.id)throw Error('Latest changed before README update.');
+           const result=api('contents/README.md',['--method','PUT','--input','-'],JSON.stringify({
+            branch:'main',sha:current.sha,content:Buffer.from(next).toString('base64'),message:'docs: sync download homepage with '+latest.tag_name
+           }));
+           const saved=api('contents/README.md?ref=main');
+           if(saved.sha!==result.content.sha||Buffer.from(saved.content,'base64').toString('utf8')!==next)throw Error('README verification failed.');
+           console.log('Download homepage synced to '+latest.tag_name);
+          }
+          NODE
