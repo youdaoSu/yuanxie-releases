@@ -1,26 +1,26 @@
 # 远协 · 客户端下载
 
-**当前版本：0.20.12** · [查看最新发布说明与全部附件](https://github.com/youdaoSu/yuanxie-releases/releases/latest)
+**当前版本：0.20.13** · [查看最新发布说明与全部附件](https://github.com/youdaoSu/yuanxie-releases/releases/latest)
 
 正式入口：[yuanxie.hengyuan.team](https://yuanxie.hengyuan.team)。新版客户端默认连接此入口，并验证服务器签名。旧客户端如仍连接旧 Pages 地址，请先下载新版；用户主动填写的自定义服务器设置会保留。
 
 | 电脑 | 安装包 | 安装方式 |
 | --- | --- | --- |
-| Windows x64（Intel / AMD） | [Windows 0.20.12 EXE 安装包](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.12/YuanXie-0.20.12-Windows-x64.exe) | 双击安装；再次运行新版安装包可覆盖升级；系统「已安装的应用」中卸载 |
-| Mac Apple Silicon（M 系列） | [macOS 0.20.12 ARM64 PKG 安装包](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.12/YuanXie-0.20.12-macOS-arm64.pkg) · [DMG](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.12/YuanXie-Desktop-0.20.12-macOS-arm64.dmg) | PKG 安装到「应用程序／远协.app」，新版可覆盖升级；退出应用后移至废纸篓卸载 |
+| Windows x64（Intel / AMD） | [Windows 0.20.13 EXE 安装包](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.13/YuanXie-0.20.13-Windows-x64.exe) | 双击安装；再次运行新版安装包可覆盖升级；系统「已安装的应用」中卸载 |
+| Mac Apple Silicon（M 系列） | [macOS 0.20.13 ARM64 PKG 安装包](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.13/YuanXie-0.20.13-macOS-arm64.pkg) · [DMG](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.13/YuanXie-Desktop-0.20.13-macOS-arm64.dmg) | PKG 安装到「应用程序／远协.app」，新版可覆盖升级；退出应用后移至废纸篓卸载 |
 | Ubuntu / Debian x64（暂停更新） | [Linux 0.20.2 x64 DEB](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.2/YuanXie-Desktop-0.20.2-Linux-x64.deb) | 使用系统软件安装器；其他附件见 0.20.2 发布页 |
 
 每份安装包提供同名 SHA-256 校验文件。Windows 安装和卸载仅处理程序文件，保留用户设置。Mac PKG 尚无 Apple Installer 签名，应用沿用开发签名，尚未通过 Apple 公证。Linux 在软件管理器安装、更新和卸载。内部兼容更新仍保留 ZIP 与更新块清单，不作为默认人工安装方式。当前不提供 Intel Mac、Linux ARM64 安装包。
 
-校验文件：[Windows EXE SHA-256](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.12/YuanXie-0.20.12-Windows-x64.exe.sha256) · [Mac PKG SHA-256](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.12/YuanXie-0.20.12-macOS-arm64.pkg.sha256) · [Mac DMG SHA-256](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.12/YuanXie-Desktop-0.20.12-macOS-arm64.dmg.sha256)。
+校验文件：[Windows EXE SHA-256](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.13/YuanXie-0.20.13-Windows-x64.exe.sha256) · [Mac PKG SHA-256](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.13/YuanXie-0.20.13-macOS-arm64.pkg.sha256) · [Mac DMG SHA-256](https://github.com/youdaoSu/yuanxie-releases/releases/download/v0.20.13/YuanXie-Desktop-0.20.13-macOS-arm64.dmg.sha256)。
 
 ## 本版功能与限制
 
 | 功能 | 当前情况 |
 | --- | --- |
 | 共享面板、文字协作 | 创建时设定开放时间与有效期，支持预约。普通用户可创建 15 分钟试用面板。软件内通过固定 12 位房间号加入。面板到期或创建者结束后回收房间号。管理员可选择托管后离开，成员继续协作。历史面板仅保存在本机。可在文件内粘贴截图或图片。粘贴回答时保留段落、标题和加粗，可切换 Markdown 原文。 |
-| 套餐与激活码 | 统一展示套餐额度、单次共享时长和默认有效期。生成激活码可沿用套餐设置，或为本批指定精确到分钟的截止时间。 |
-| 会议与共享 | 提供麦克风、摄像头、屏幕共享及共享声音；由操作系统权限、设备及所选音源支持情况决定是否可用 |
+| 套餐与激活码 | 统一展示套餐额度、单次共享时长和默认有效期。生成激活码可沿用套餐设置，或为本批指定精确到分钟的截止时间。到期后仍可登录，系统会恢复之前仍有效的套餐身份。 |
+| 会议与共享 | Windows 会议可铺满当前显示器。成员列表集中显示设备请求，会议可分别恢复麦克风和共享声音。提供麦克风、摄像头、屏幕共享及共享声音；由操作系统权限、设备及所选音源支持情况决定是否可用 |
 | 设备请求与远程协助 | 可请求成员开启设备；远程键鼠操作须对方同意，保留可见状态与停止入口 |
 | 个人语音助手 | 可转写自己的麦克风或本机声音。成员开启麦克风或共享电脑声音时，可同时允许主持人转写这路声音，也可随时撤回。说完一题点「问题已说完」生成回答，再点这道题的「发布答案」，将回答正文写入所选面板文件。问答支持 Markdown 显示和复制，在面板结束前可重新打开查看。 |
 | 本场简历与岗位 JD | 每位成员可填写临时材料或导入 PDF／DOCX／ODT／TXT／MD，单份上限 20 MiB；使用他人材料须来源本人确认，修改后需重新同意，可撤回 |
